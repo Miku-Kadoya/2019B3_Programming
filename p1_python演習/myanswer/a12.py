@@ -1,5 +1,3 @@
-import numpy
-
 with open("dataset/data.txt", "r") as f:
     docs = []
     terms = []
