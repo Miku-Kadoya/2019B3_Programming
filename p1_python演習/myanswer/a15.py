@@ -3,6 +3,15 @@ import numpy as np
 docs = [["リンゴ", "リンゴ"], ["リンゴ", "レモン"], ["レモン", "ミカン"]]
 terms = ["リンゴ", "レモン", "ミカン"]
 
+a = np.zeros((len(docs), len(terms)))
+
+def tf(term, doc):
+    count = 0
+    for word in doc:
+        if (word == term):
+            count += 1
+    return count / len(doc)
+
 def idf(term, docs):
     count = 0
     for doc in docs:
@@ -10,5 +19,8 @@ def idf(term, docs):
             count += 1
     return np.log10(len(docs) / count) + 1
 
-for term in terms:
-    print("idf({0}) = {1}".format(term, idf(term, docs)))
+for i, doc in enumerate(docs):
+    for j, term in enumerate(terms):
+        a[i][j] = tf(term, doc) * idf(term, docs)
+
+print(a)
