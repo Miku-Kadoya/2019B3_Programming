@@ -25,8 +25,12 @@ class SoftmaxCrossEntropy():
     def backprop(self, dL):
         return dL * (self.y - self.t)
 
-x = np.array([[1.0, 0.5], [-0.4, 0.1]])
-t = np.array([[1.0, 0.0], [0.0, 1.0]])
-sce = SoftmaxCrossEntropy()
-print("順伝播出力: \n", sce.forward(x, t))
-print("逆伝播出力: \n", sce.backprop(1))
+def main():
+    x = np.array([[1.0, 0.5], [-0.4, 0.1]])
+    t = np.array([[1.0, 0.0], [0.0, 1.0]])
+    sce = SoftmaxCrossEntropy()
+    print("順伝播出力: \n", sce.forward(x, t))
+    print("逆伝播出力: \n", sce.backprop(1))
+
+if __name__ == "__main__":
+    main()
